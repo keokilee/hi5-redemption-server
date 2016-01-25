@@ -14,7 +14,10 @@ const modules = fs.readdirSync('node_modules')
 module.exports = {
   context: process.cwd(),
   devtool: 'sourcemap',
-  entry: path.join(process.cwd(), 'server', 'index.js'),
+  entry: {
+    server: path.join(process.cwd(), 'app', 'index.js'),
+    loader: path.join(process.cwd(), 'app', 'locations', 'loader.js')
+  },
   externals: modules,
   module: {
     preLoaders: [{
@@ -28,11 +31,11 @@ module.exports = {
   },
   output: {
     path: 'build/',
-    filename: 'server.js'
+    filename: '[name].bundle.js'
   },
   plugins: [
-    new webpack.BannerPlugin('require("source-map-support").install();',
-                             { raw: true, entryOnly: false })
+    new webpack.BannerPlugin({ banner: 'require("source-map-support").install();',
+                               raw: true, entryOnly: false })
   ],
   resolve: {
     extensions: ['', '.js', '.jsx']

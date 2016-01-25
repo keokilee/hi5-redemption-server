@@ -11,7 +11,7 @@ let started = false
 
 nodemon({
   execMap: { js: 'node' },
-  script: path.join(__dirname, 'build/server.js'),
+  script: path.join(__dirname, 'build/server.bundle.js'),
   ignore: ['*'],
   watch: ['noop/'],
   ext: 'noop'
