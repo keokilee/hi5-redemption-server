@@ -1,7 +1,7 @@
 'use strict'
 
-const express = require('express')
-const redis = require('redis')
+import express from 'express'
+import redis from 'redis'
 
 const app = express()
 const redisClient = redis.createClient()
